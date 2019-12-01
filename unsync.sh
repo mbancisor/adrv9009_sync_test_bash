@@ -1,5 +1,14 @@
 #!/bin/bash
 
-iio_reg hmc7044 0x1 0x62
+# restart dividers
+
+iio_reg hmc7044 0x1 0x61
+iio_reg hmc7044-car 0x1 0x61
+iio_reg hmc7044-ext 0x1 0x01
+sleep 0.1
+iio_reg hmc7044-ext 0x1 0x00
+sleep 0.1
+iio_reg hmc7044-car 0x1 0x60
 sleep 0.1
 iio_reg hmc7044 0x1 0x60
+sleep 0.1
