@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-master_IP="192.168.1.60"
-slave_IP="192.168.1.61"
+master_IP="192.168.1.62"
+slave_IP="192.168.1.63"
 run_all=0
 
 LO=1000000000
@@ -49,7 +49,7 @@ then
 fi
 
 # 4 - setup ADRV9009
-if [ $# -eq 0 ] || [ $5 -eq 1 ]
+if [ $# -eq 0 ] || [ $4 -eq 1 ]
 then
 	#setup 90009
 	sshpass -p 'analog' ssh root@$master_IP 'bash -s' < ./adrv_setup.sh $LO 
@@ -58,7 +58,7 @@ then
 fi
 
 # 5 - MCS SYNC
-if [ $# -eq 0 ] || [ $6 -eq 1 ]
+if [ $# -eq 0 ] || [ $5 -eq 1 ]
 then
 	#MCS
 	./mcs.sh $master_IP $slave_IP
@@ -67,7 +67,7 @@ fi
 
 
 # 6 - DMA arm
-if [ $# -eq 0 ] || [ $7 -eq 1 ]
+if [ $# -eq 0 ] || [ $6 -eq 1 ]
 then
 	echo DMA arm
 	./DMA_arm.sh $master_IP $slave_IP
@@ -76,7 +76,7 @@ fi
 sleep 1
 
 # 7 - Get data
-if [ $# -eq 0 ] || [ $8 -eq 1 ]
+if [ $# -eq 0 ] || [ $6 -eq 1 ]
 then
 	echo getting samples
 	iio_readdev -n $master_IP -b $buffers -s $samples -T 10000 axi-adrv9009-rx-hpc > samples_master.dat &
