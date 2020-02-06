@@ -35,13 +35,17 @@ then
 		sleep 0.1
 	# step 2
 		iio_attr -q -d hmc7044-ext sysref_request 1
-iio_attr  -q -d adrv9009-phy multichip_sync 11 >/dev/null 2>&1
-iio_attr  -q -d adrv9009-phy-b multichip_sync 11 >/dev/null 2>&1
-export IIOD_REMOTE=$SLAVE
-iio_attr  -q -d adrv9009-phy multichip_sync 11 >/dev/null 2>&1
-iio_attr  -q -d adrv9009-phy-b multichip_sync 11 >/dev/null 2>&1
-unset IIOD_REMOTE
+		sleep 0.5
+		iio_attr  -q -d adrv9009-phy multichip_sync 11 >/dev/null 2>&1
+		iio_attr  -q -d adrv9009-phy-b multichip_sync 11 >/dev/null 2>&1
+	unset IIOD_REMOTE
+	
+	export IIOD_REMOTE=$SLAVE
+		iio_attr  -q -d adrv9009-phy multichip_sync 11 >/dev/null 2>&1
+		iio_attr  -q -d adrv9009-phy-b multichip_sync 11 >/dev/null 2>&1
+	unset IIOD_REMOTE
 
+	export IIOD_REMOTE=$MASTER
 	# step 3 & 4
 		iio_attr  -q -d adrv9009-phy multichip_sync 3 >/dev/null 2>&1
 		iio_attr  -q -d adrv9009-phy-b multichip_sync 3 >/dev/null 2>&1

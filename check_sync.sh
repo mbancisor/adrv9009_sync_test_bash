@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-master_IP="192.168.1.62"
-slave_IP="192.168.1.63"
+master_IP="192.168.1.60"
+slave_IP="192.168.1.61"
 run_all=0
 
 LO=1000000000
@@ -76,7 +76,7 @@ fi
 sleep 1
 
 # 7 - Get data
-if [ $# -eq 0 ] || [ $6 -eq 1 ]
+if [ $# -eq 0 ] || [ $7 -eq 1 ]
 then
 	echo getting samples
 	iio_readdev -n $master_IP -b $buffers -s $samples -T 10000 axi-adrv9009-rx-hpc > samples_master.dat &
