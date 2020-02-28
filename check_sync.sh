@@ -7,8 +7,8 @@ run_all=0
 
 LO=1000000000
 
-samples=512
-buffers=512
+samples=1024
+buffers=1024
 
 echo   1          2       3          4       5     6    7     
 echo unsync  7044_setup  sync   setup_adrv  MCS   DMA  data
@@ -54,6 +54,7 @@ then
 	#setup 90009
 	sshpass -p 'analog' ssh root@$master_IP 'bash -s' < ./adrv_setup.sh $LO 
 	sshpass -p 'analog' ssh root@$slave_IP 'bash -s' < ./adrv_setup.sh $LO
+	sleep 1
 	echo setup done
 fi
 
